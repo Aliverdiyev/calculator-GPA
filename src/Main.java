@@ -8,9 +8,21 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        Integer credits = 0;
+        boolean validCredits = false;
 
-        System.out.println("Enter number of credits:");
-        String credits = sc.nextLine();
+        do {
+            System.out.println("Enter number of credits:");
+            String creditsString = sc.nextLine();
+            try {
+                credits = Integer.parseInt(creditsString);
+                validCredits = true;
+            } catch (NumberFormatException nfe) {
+                System.out.println("Please enter a valid integer number");
+            }
+        }
+        while (!validCredits);
+
 
         System.out.println("Enter grade:");
         String grade = sc.nextLine();
@@ -30,8 +42,8 @@ public class Main {
             System.out.println("Invalid grade");
         }
 
-        Integer points = gradeValue * Integer.parseInt(credits);
-        Integer gpa = points / Integer.parseInt(credits);
+        Integer points = gradeValue * credits;
+        Integer gpa = points / credits;
 
         System.out.println("Credits: " + credits);
         System.out.println("Grade: " + grade);
