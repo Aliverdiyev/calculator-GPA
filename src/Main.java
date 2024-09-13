@@ -1,3 +1,4 @@
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 /*
@@ -58,15 +59,16 @@ public class Main {
 
             System.out.println("Would you like to enter another class? (Y/N)");
             String moreClassesString = sc.nextLine();
-            moreClasses = moreClassesString.equalsIgnoreCase("Y");
+            moreClasses = moreClassesString.equalsIgnoreCase("Y"); // A loop can also be written for a selection other than N
 
         } while (moreClasses);
 
-        Integer gpa = totalPoints / totalCredits;
+        DecimalFormat df = new DecimalFormat("0.00");
+        Double gpa = Double.valueOf(totalPoints) / Double.valueOf(totalCredits);
 
         System.out.println("Credits: " + totalCredits);
         System.out.println("Points: " + totalPoints);
-        System.out.println("GPA: " + gpa);
+        System.out.println("GPA: " + df.format(gpa));
 
         sc.close();
     }
